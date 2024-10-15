@@ -22,4 +22,7 @@ Select "Create Role". Then click on 'AWS Service' as the 'Trusted entity type'.
 
 Select that you want to give permissions to Lambda. Then choose “AmazonS3FullAccess” and “AmazonEventBridgeFullAccess”
 
-#### 1.3 IAM Permissions
+#### 1.4 S3 Bucket
+Create an S3 bucket and name it as you like. The bucket should be in the same region as the Lambda function. Create a folder in the bucket named 'extraction-staging' that will contain our extracted data.
+
+
