@@ -13,4 +13,5 @@ On folder AWS-financial-project-1/aws_files, there is a file named 'extraction_l
 #### 1.3 IAM Permissions
 We need to make sure that our Lambda function is allowed to interact with S3 and EventBridge. S3 is the AWS object storage service where we will store our extracted data in this data staging phase. We will use EventBridge to orchestrate our data pipeline.
 Go to IAM, click 'Roles' under 'Access management'.
+
 ![image info](./images/Picture1.png)
