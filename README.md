@@ -23,3 +23,11 @@ AWS Services:
 - EventBridge
 - Glue
 - Athena
+
+
+Disclaimer:
+- The information provided in this project is for educational and informational purposes only and should not be considered financial advice.
+
+
+Warning:
+- This project utilizes AWS services that may incur costs. Be sure to review your AWS usage and billing information regularly to avoid unexpected charges. It is recommended to use AWS Free Tier options where possible and set up billing alerts for cost management.
