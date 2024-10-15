@@ -49,3 +49,8 @@ And upload the zipped folder to the layer:
 
 ![image info](./images/Picture5.png)
 
+Edit asynchronous configuration options to avoid the function running multiple times 
+
+![image info](./images/Picture6.png)
+
+## Model
