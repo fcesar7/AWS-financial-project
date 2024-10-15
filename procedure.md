@@ -32,10 +32,20 @@ Create a Lambda function (select 'Author from scratch'). Name it 'financial-proj
 
 #### 1.6 Upload dependencies
 Dependencies are external libraries that we use on our python scripts like numpy or pandas. We need to create a Lambda Layer attached to our Lambda Function and upload a zipped folder to this layer. I did not upload the zipped folder given size restrictions.
+Check https://docs.aws.amazon.com/lambda/latest/dg/packaging-layers.html for more info.
 You need to go to each libraries' pypi webpage, download the zipped library, then unzip them. You should have a 'mother' folder that contains several folders, each of them corresponding to a specific library. you will then put that 'mother' folder inside some other folders and zip everything. The structure should look like this and make sure to name the folders the same:
 
 ![image info](./images/Picture30.png)
 
-The 'mother' folder mentiones is the 'site-packages' folder, and it should include a folder or two for each package, like this:
+The 'mother' folder mentioned is the 'site-packages' folder, and it should include a folder or two for each package, like this:
 
 ![image info](./images/Picture31.png)
+
+Now create a lambda layer:
+
+![image info](./images/Picture4.png)
+
+And upload the zipped folder to the layer:
+
+![image info](./images/Picture5.png)
+
