@@ -15,3 +15,11 @@ We need to make sure that our Lambda function is allowed to interact with S3 and
 Go to IAM, click 'Roles' under 'Access management'.
 
 ![image info](./images/Picture1.png)
+
+Select "Create Role". Then click on 'AWS Service' as the 'Trusted entity type'.
+
+![image info](./images/Picture2.png)
+
+Select that you want to give permissions to Lambda. Then choose “AmazonS3FullAccess” and “AmazonEventBridgeFullAccess”
+
+#### 1.3 IAM Permissions
