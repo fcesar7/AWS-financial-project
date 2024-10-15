@@ -23,6 +23,7 @@ AWS Services:
 - EventBridge
 - Glue
 - Athena
+- IAM
 
 
 Disclaimer:
