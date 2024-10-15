@@ -1,1 +1,1 @@
-This folder is for you to run your code locally with jupyter notebooks and test it in case you are trying to replicate the project
+In this folder you can find jupyter notebook files to run and test locally in case you are trying to replicate the project
