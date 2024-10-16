@@ -93,7 +93,9 @@ Change the function’s timeout and memory to accommodate for the workload requi
 ![image info](./images/Picture10.png)
 
 ### 3. Orchestration
-#### 3.1 Glue Data Cataloging
+#### 3.1 Orchestration Overview
+The process is orchestrated as following: Every week day the first Lambda function runs on a schedule. Then this function sends an event to EventBridge's event bus that will trigger an EventBridge rule. This EventRule will start the second Lambda Function. This function will start a Glue Crawler that will fetch data from S3 and load it to a database. Then Athena will query this data to Power BI.
+#### 3.2 Glue Data Cataloging
 The second function starts a Glue Crawler. We need to create that Glue Crawler.
 First create a Glue Database. Go to AWS Glue, Databases, Add database.
 
@@ -114,3 +116,8 @@ Choose the new database as the target database. This way the crawler will extrac
 The 2 tables are now in Glue.
 
 ![image info](./images/Picture16.png)
+
+#### 3.3 EventBridge Schedule - Lambda Extraction Function
+Go to Amazon Eventbridge and create an EventBridge Schedule:
+
+![image info](./images/Picture18.png)
