@@ -1,4 +1,4 @@
-# AWS-financial-project-1
+# AWS-financial-project
 End to end data project with a hybrid architecture
 
 This project leverages AWS Compute, Storage, and Orchestration services to automate a data pipeline for extracting, storing, and processing data with a machine learning algorithm. The machine learning results are visualized through a Power BI dashboard, providing actionable insights.
