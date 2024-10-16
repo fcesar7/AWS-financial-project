@@ -118,7 +118,7 @@ And choose the extraction function. The payload is optional.
 
 ![image info](./images/Picture24.png)
 
-#### 3.2 EventBridge Rule - Lambda Model Function
+#### 3.3 EventBridge Rule - Lambda Model Function
 We want the first lambda function to trigger the second one after it finishes running. This part of the code in the first function will send an event to EventBridge:
 
 ![image info](./images/Picture25.png)
