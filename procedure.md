@@ -157,5 +157,19 @@ The 2 tables are now in Glue.
 
 ![image info](./images/Picture16.png)
 
+#### 3.5 From AWS to Power BI
+Create another S3 folder for the data you query with Athena (when using power BI). Name it 'Queries'
+We need to download an ODBC Amazon Athena Driver to use the Athena Connector as a Power BI data source. Download it from https://docs.aws.amazon.com/athena/latest/ug/odbc-v2-driver.html
+Now, search for ODBC Data Source Administrator (on windows search bar). Go to system DSN and click ‘Add…’. Select ‘Amazon Athena ODBC’. Do the following:
 
+![image info](./images/Picture17.png)
 
+Now go to 'Authentication Options'. Authenticate with your IAM user credentials. Make sure you rotate credentials regularly though, following security best practices. Then test and click OK. 
+In Power BI Desktop go to get data, more, Amazon Athena.
+Now the process runs daily on aws. To update the Power BI report, click 'Refresh' on the 'Home' tab
+
+### Notes
+- Make sure you don't leave anything running that you don't intend to.
+- Everytime you refresh your Power BI report, there will be more query result files stored in S3.
+- The information provided in this project is for educational and informational purposes only and should not be considered financial advice.
+- This project utilizes AWS services that may incur costs. Be sure to review your AWS usage and billing information regularly to avoid unexpected charges. It is recommended to use AWS Free Tier options where possible and set up billing alerts for cost management.
