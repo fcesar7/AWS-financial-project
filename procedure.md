@@ -56,10 +56,11 @@ Edit asynchronous configuration options to avoid the function running multiple t
 ### 2. Model
 #### 2.1 Machine Learning Model Overview
 The model script reads the data from the S3 bucket, compiles the data into a single dataframe and uses gold's 30 days exponential moving average along with the other features to evaluate the gold price. The model uses XGBoost, which does not work well when extrapolating. The script uses just gold's 30 day EMA to value gold if we are extrapolating. Future work: instead, build another ML model to apply when extrapolating, resulting in a hybrid model.
+Besides implementing the model and storing the results to S3, the script also starts a Glue Crawler to create a data catalog. Power BI will later query data from this data source.
 
 #### 2.2 Dependencies - Docker
 Since the large size of the XGBoost package, resulting in a total size of over the 250 MB limit, the dependencies of the ML model script and the script itself were ulpoaded as a Docker image. 
-Go to Amazon Elastic Container Repository (ECR) service and reate a repository. let's call it financial-project-1. 
+Go to Amazon Elastic Container Repository (ECR) service and reate a repository. Let's call it financial-project-1. 
 Now create a folder in your computer with the following files:
 
 ![image info](./images/Picture7.png)
@@ -74,11 +75,16 @@ Now with your ECR repository selected, click 'View push commands'
 In your local command prompt, go to the directory of the folder containing the 3 files. Copy and run each command from the 'View push commands'. This way you will push the image to ECR.
 
 #### 2.3 IAM Permissions - S3 and Glue
-We still need to read and write to S3. We also need the function to 
+We still need to read and write to S3. We also need the function to start a Glue Crawler - it catalogs our curated data from S3 so we can then use it as a source for Athena to query it to Power BI.
 Create a role with 'AmazonS3FullAccess' and 'AWSGlueServiceRole'
 
 #### 2.4 Lambda Function to implement the model
-Create a Lambda function from a container image.
+Create a Lambda function from a container image and give it this new IAM role.
 
 ![image info](./images/Picture9.png)
 
+Change the function’s timeout and memory to accommodate for the workload requirements.
+
+![image info](./images/Picture10.png)
+
+### 3. 
