@@ -166,7 +166,8 @@ Now, search for ODBC Data Source Administrator (on windows search bar). Go to sy
 
 Now go to 'Authentication Options'. Authenticate with your IAM user credentials. Make sure you rotate credentials regularly though, following security best practices. Then test and click OK. 
 In Power BI Desktop go to get data, more, Amazon Athena.
-Now the process runs daily on aws. To update the Power BI report, click 'Refresh' on the 'Home' tab
+Now the process runs daily on aws. To update the Power BI report, click 'Refresh' on the 'Home' tab.
+Everytime you refresh your Power BI report, there will be more query results files stored in S3.
 
 ### Notes
 - Make sure you don't leave anything running that you don't intend to.
