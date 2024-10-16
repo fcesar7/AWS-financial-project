@@ -170,6 +170,6 @@ Now the process runs daily on aws. To update the Power BI report, click 'Refresh
 
 ### Notes
 - Make sure you don't leave anything running that you don't intend to.
-- Everytime you refresh your Power BI report, there will be more query result files stored in S3.
+- Everytime you refresh your Power BI report, there will be more query results files stored in S3.
 - The information provided in this project is for educational and informational purposes only and should not be considered financial advice.
 - This project utilizes AWS services that may incur costs. Be sure to review your AWS usage and billing information regularly to avoid unexpected charges. It is recommended to use AWS Free Tier options where possible and set up billing alerts for cost management.
