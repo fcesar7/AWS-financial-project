@@ -59,6 +59,7 @@ Edit asynchronous configuration options to avoid the function running multiple t
 The model script reads the data from the S3 bucket, compiles the data into a single dataframe and uses gold's 30 days exponential moving average along with the other features to evaluate the gold price. The model uses XGBoost, which does not work well when extrapolating. The script uses just gold's 30 day EMA to value gold if we are extrapolating. Future work: instead, build another ML model to apply when extrapolating, resulting in a hybrid model.
 The model trains with time series splits and is tested on more recent data. Two grid searches were applied sequentially, first with the main hyperparameters and then adding the regularization parameters. 
 Besides implementing the model and storing the results to S3, the script also starts a Glue Crawler to create a data catalog. Power BI will later connect to Athena to query data from this data source.
+In the folder AWS-financial-project/local_test, the file 'model_notebook' explains how the model is implemented, visually describing how the model is trained.
 
 #### 2.2 S3 folder for model results
 In the same bucket, create 2 folders, one named 'complete-dataset' and other named 'model-results'. The former will house the compiled data and the latter the model results on the test set.
