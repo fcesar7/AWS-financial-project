@@ -23,7 +23,7 @@ Select "Create Role". Then click on 'AWS Service' as the 'Trusted entity type'.
 Select that you want to give permissions to Lambda. Then choose “AmazonS3FullAccess” and “AmazonEventBridgeFullAccess”
 
 #### 1.4 S3 Bucket
-Create an S3 bucket and name it as you like. The bucket will be referred to as 'financial-project' from now on. The bucket should be in the same region as the Lambda function. Create a folder in the bucket named 'extraction-staging' that will contain our extracted data.
+Create an S3 bucket and name it as you like. The bucket will be referred to as 'financial-project-1' from now on. The bucket should be in the same region as the Lambda function. Create a folder in the bucket named 'extraction-staging' that will contain our extracted data.
 
 #### 1.5 Lambda Function for Extraction
 Create a Lambda function (select 'Author from scratch'). Name it 'financial-project-1-staging-extraction'. Paste the extraction script on the 'code' tab. Go to the 'Configuration' tab and to 'Environment variables'. Add your API keys as Environment Variables. This shouldn't be done if they were sensitive API keys for security reasons.
@@ -53,4 +53,22 @@ Edit asynchronous configuration options to avoid the function running multiple t
 
 ![image info](./images/Picture6.png)
 
-## Model
+### 2. Model
+#### 2.1 Machine Learning Model Overview
+The model script reads the data from the S3 bucket, compiles the data into a single dataframe and uses gold's 30 days exponential moving average along with the other features to evaluate the gold price. The model uses XGBoost, which does not work well when extrapolating. The script uses just gold's 30 day EMA to value gold if we are extrapolating. Future work: instead, build another ML model to apply when extrapolating, resulting in a hybrid model.
+
+#### 2.2 Dependencies - Docker
+Since the large size of the XGBoost package, resulting in a total size of over the 250 MB limit, the dependencies of the ML model script and the script itself were ulpoaded as a Docker image. 
+Go to Amazon Elastic Container Repository (ECR) service and reate a repository. let's call it financial-project-1. 
+Now create a folder in your computer with the following files:
+
+![image info](./images/Picture7.png)
+
+The files are the python script that applies the machine learning model, a text file with the names of the dependencies we need to install and import, and a Dockerfile that builds a docker image, installs the dependencies and containerizes the python script.
+You can find the files on this GitHub repository on the directory AWS-financial-project/aws_files.
+
+Now with your ECR repository selected, click 'View push commands'
+
+![image info](./images/Picture8.png)
+
+In your local command prompt, go to the directory of the folder containing the 3 files. Copy and run each command from the 'View push commands'. This way you will push the image to ECR.
