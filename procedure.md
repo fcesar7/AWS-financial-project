@@ -10,7 +10,7 @@ This project consists on building an end-to-end data project. The data architect
 API keys need to be obtained from Alpha Vantage and FRED websites. They are required in order to make API requests to the respective services.
 #### 1.2 Extraction Script
 On folder AWS-financial-project/aws_files, there is a file named 'extraction_lambda.py'. This is the python script we will upload to AWS Lambda.
-#### 1.3 IAM Permissions
+#### 1.3 IAM Permissions - S3 and EventBridge
 We need to make sure that our Lambda function is allowed to interact with S3 and EventBridge. S3 is the AWS object storage service where we will store our extracted data in this data staging phase. We will use EventBridge to orchestrate our data pipeline.
 Go to IAM, click 'Roles' under 'Access management'.
 
@@ -20,7 +20,7 @@ Select "Create Role". Then click on 'AWS Service' as the 'Trusted entity type'.
 
 ![image info](./images/Picture2.png)
 
-Select that you want to give permissions to Lambda. Then choose “AmazonS3FullAccess” and “AmazonEventBridgeFullAccess”
+Select that you want to give permissions to Lambda. Then choose 'AmazonS3FullAccess' and 'AmazonEventBridgeFullAccess'
 
 #### 1.4 S3 Bucket
 Create an S3 bucket and name it as you like. The bucket will be referred to as 'financial-project-1' from now on. The bucket should be in the same region as the Lambda function. Create a folder in the bucket named 'extraction-staging' that will contain our extracted data.
@@ -72,3 +72,13 @@ Now with your ECR repository selected, click 'View push commands'
 ![image info](./images/Picture8.png)
 
 In your local command prompt, go to the directory of the folder containing the 3 files. Copy and run each command from the 'View push commands'. This way you will push the image to ECR.
+
+#### 2.3 IAM Permissions - S3 and Glue
+We still need to read and write to S3. We also need the function to 
+Create a role with 'AmazonS3FullAccess' and 'AWSGlueServiceRole'
+
+#### 2.4 Lambda Function to implement the model
+Create a Lambda function from a container image.
+
+![image info](./images/Picture9.png)
+
