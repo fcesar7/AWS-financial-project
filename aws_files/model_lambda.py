@@ -179,9 +179,8 @@ def lambda_handler(event, context):
     model_range = data_limits(model)
     model_implementation(model, model_range, S3_PREFIX_3)
 
-    # Initialize a Glue client using Boto3
+    # Initialize a Glue client
     glue_client = boto3.client('glue')
-    # Replace with your actual crawler name
     crawler_name = 'financial-project-1-crawler'
     try:
         # Start the Glue Crawler
