@@ -119,6 +119,21 @@ And choose the extraction function. The payload is optional.
 ![image info](./images/Picture24.png)
 
 #### 3.2 EventBridge Rule - Lambda Model Function
+We want the first lambda function to trigger the second one after it finishes running. This part of the code in the first function will send an event to EventBridge:
+
+![image info](./images/Picture25.png)
+
+Go to Event buses on EventBridge. Click the default bus and select 'Create rule'. Select the following options:
+
+![image info](./images/Picture26.png)
+
+![image info](./images/Picture27.png)
+
+![image info](./images/Picture28.png)
+
+![image info](./images/Picture29.png)
+
+Now the second function will trigger after the extraction function finishes.
 
 #### 3.4 Glue Data Cataloging
 The second function starts a Glue Crawler. We need to create that Glue Crawler.
