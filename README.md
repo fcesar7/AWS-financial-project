@@ -11,10 +11,11 @@ Domains:
 - Cloud Data Engineering
 
 Tools:
+- AWS
 - Python Scripts
 - Docker Images
 - Power BI
-- AWS
+
 
 AWS Services:
 - Lambda
